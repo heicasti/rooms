@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Nombre: {{ sala_detail.nombre }}</h1>
+
+  <p><strong>Ubicación:</strong> <a href="">{{ sala_detail.ubicacion }}</a></p> 
+  <p><strong>Insumos:</strong> {% for insumo in sala_detail.insumo.all %} {{ insumo }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>  
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Reservas</h4>
+    {% for reserva in sala_detail.reserva_set.all %}
+    <hr>
+    <p class="{% if reserva.estado == 'c' %}text-success{% elif reserva.estado == 'p' %}text-danger{% else %}text-warning{% endif %}">{{ reserva.get_estado_display }}</p>
+    {% if reserva.estado != 'p' %}<p><strong>Reserva hasta:</strong> {{reserva.hora_fin}}</p>{% endif %}
+    <p><strong>Fecha:</strong> {{reserva.fecha}}</p>
+    <p class="text-muted"><strong>Id:</strong> {{reserva.id}}</p>
+    {% endfor %}
+  </div>
+{% endblock %}

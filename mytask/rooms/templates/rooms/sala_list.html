@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>sala List</h1>
+
+    {% if sala_list %}
+    <ul>
+
+      {% for sala in sala_list %}
+      <li>
+        <a href="{{ sala.get_absolute_url }}">{{ sala.nombre }}</a> ({{sala.ubicacion}})
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no salas in the library.</p>
+    {% endif %}       
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Inicio</h1>
+  <p>Bienvenido <em>Sistema de Reservas</em></p>
+<h2>Dynamic content</h2>
+  <p>Estadísticas:</p>
+  <ul>
+    <li><strong>Salas:</strong> {{ num_salas }}</li>
+    <li><strong>Reservas:</strong> {{ num_reservas }}</li>
+    <li><strong>Reservas confirmadas:</strong> {{ num_reservas_disponibles }}</li>
+    <li><strong>Empleadores:</strong> {{ num_empleadores }}</li>
+  </ul>
+
+{% endblock %}
